@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Food Ordering System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 180px;
+            box-shadow: 0 0 5px gray;
+        }
+
+        button {
+            background: green;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #cart {
+            margin-top: 30px;
+            background: white;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Online Food Ordering System</h1>
+
+<div class="menu">
+
+    <div class="item">
+        <h3>Pizza</h3>
+        <p>₹250</p>
+        <img src= C:\Users\acer\Downloads\pizza-pizza-filled-with-tomatoes-salami-olives.jpg height="100" width="100">
+        <button onclick="addToCart('Pizza',250)">Add</button>
+    </div>
+
+    <div class="item">
+        <h3>Burger</h3>
+        <p>₹150</p>
+        <img src= C:\Users\acer\Downloads\front-view-tasty-meat-burger-with-cheese-salad-dark-background.jpg height="100" width="100">
+        <button onclick="addToCart('Burger',150)">Add</button>
+    </div>
+
+    <div class="item">
+        <h3>Pasta</h3>
+        <p>₹200</p>
+        <img src= C:\Users\acer\Downloads\penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table.jpg height="100" width="100">
+        <button onclick="addToCart('Pasta',200)">Add</button>
+    </div>
+
+</div>
+
+<div id="cart">
+    <h2>Cart</h2>
+    <ul id="cartItems"></ul>
+
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+    <button onclick="placeOrder()">Place Order</button>
+</div>
+
+<script>
+
+let total = 0;
+
+function addToCart(item, price)
+{
+    let li = document.createElement("li");
+    li.innerHTML = item + " - ₹" + price;
+
+    document.getElementById("cartItems").appendChild(li);
+
+    total += price;
+    document.getElementById("total").innerHTML = total;
+}
+
+function placeOrder()
+{
+    if(total == 0)
+    {
+        alert("Your cart is empty!");
+    }
+    else
+    {
+        alert("Order placed successfully!\nTotal Amount: ₹" + total);
+
+        document.getElementById("cartItems").innerHTML = "";
+        total = 0;
+        document.getElementById("total").innerHTML = total;
+    }
+}
+
+</script>
+
+</body>
+</html>
